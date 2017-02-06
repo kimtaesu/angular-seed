@@ -1,8 +1,7 @@
-import { join } from 'path';
-import * as slash from 'slash';
-import { argv } from 'yargs';
-
-import { BuildType, ExtendPackages, InjectableDependency } from './seed.config.interfaces';
+import {join} from "path";
+import * as slash from "slash";
+import {argv} from "yargs";
+import {BuildType, ExtendPackages, InjectableDependency} from "./seed.config.interfaces";
 
 /************************* DO NOT CHANGE ************************
  *
@@ -83,9 +82,9 @@ export class SeedConfig {
   COVERAGE_PORT = argv['coverage-port'] || 4004;
 
   /**
-  * The path to the coverage output
-  * NB: this must match what is configured in ./karma.conf.js
-  */
+   * The path to the coverage output
+   * NB: this must match what is configured in ./karma.conf.js
+   */
   COVERAGE_DIR = 'coverage_js';
   COVERAGE_TS_DIR = 'coverage';
 
@@ -317,13 +316,13 @@ export class SeedConfig {
    * @type {InjectableDependency[]}
    */
   NPM_DEPENDENCIES: InjectableDependency[] = [
-    { src: 'core-js/client/shim.min.js', inject: 'shims' },
-    { src: 'zone.js/dist/zone.js', inject: 'libs' },
-    { src: 'zone.js/dist/long-stack-trace-zone.js', inject: 'libs', buildType: BUILD_TYPES.DEVELOPMENT },
-    { src: 'intl/dist/Intl.min.js', inject: 'shims' },
-    { src: 'systemjs/dist/system.src.js', inject: 'shims', buildType: BUILD_TYPES.DEVELOPMENT },
+    {src: 'core-js/client/shim.min.js', inject: 'shims'},
+    {src: 'zone.js/dist/zone.js', inject: 'libs'},
+    {src: 'zone.js/dist/long-stack-trace-zone.js', inject: 'libs', buildType: BUILD_TYPES.DEVELOPMENT},
+    {src: 'intl/dist/Intl.min.js', inject: 'shims'},
+    {src: 'systemjs/dist/system.src.js', inject: 'shims', buildType: BUILD_TYPES.DEVELOPMENT},
     // Temporary fix. See https://github.com/angular/angular/issues/9359
-    { src: '.tmp/Rx.min.js', inject: 'libs', buildType: BUILD_TYPES.DEVELOPMENT },
+    {src: '.tmp/Rx.min.js', inject: 'libs', buildType: BUILD_TYPES.DEVELOPMENT},
   ];
 
   /**
@@ -331,7 +330,7 @@ export class SeedConfig {
    * @type {InjectableDependency[]}
    */
   APP_ASSETS: InjectableDependency[] = [
-    { src: `${this.CSS_SRC}/main.${this.getInjectableStyleExtension()}`, inject: true, vendor: false },
+    {src: `${this.CSS_SRC}/main.${this.getInjectableStyleExtension()}`, inject: true, vendor: false},
   ];
 
   /**
@@ -360,6 +359,7 @@ export class SeedConfig {
     defaultJSExtensions: true,
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
+      '@angular/material': 'node_modules/@angular/material/bundles/material.umd.js',
       '@angular/common': 'node_modules/@angular/common/bundles/common.umd.js',
       '@angular/compiler': 'node_modules/@angular/compiler/bundles/compiler.umd.js',
       '@angular/core': 'node_modules/@angular/core/bundles/core.umd.js',
@@ -373,19 +373,15 @@ export class SeedConfig {
       '@angular/compiler/testing': 'node_modules/@angular/compiler/bundles/compiler-testing.umd.js',
       '@angular/core/testing': 'node_modules/@angular/core/bundles/core-testing.umd.js',
       '@angular/http/testing': 'node_modules/@angular/http/bundles/http-testing.umd.js',
-      '@angular/platform-browser/testing':
-        'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
-      '@angular/platform-browser-dynamic/testing':
-        'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+      '@angular/platform-browser/testing': 'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
+      '@angular/platform-browser-dynamic/testing': 'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
-
       'app/*': '/app/*',
       // For test config
       'dist/dev/*': '/base/dist/dev/*',
       '*': 'node_modules/*'
     },
-    packages: {
-    }
+    packages: {}
   };
 
   /**
@@ -416,6 +412,10 @@ export class SeedConfig {
       '*': 'node_modules/*'
     },
     packages: {
+      '@angular/material': {
+        main: 'index.js',
+        defaultExtension: 'js'
+      },
       '@angular/common': {
         main: 'index.js',
         defaultExtension: 'js'
@@ -479,8 +479,7 @@ export class SeedConfig {
    * White list for CSS color guard
    * @type {[string, string][]}
    */
-  COLOR_GUARD_WHITE_LIST: [string, string][] = [
-  ];
+  COLOR_GUARD_WHITE_LIST: [string, string][] = [];
 
   /**
    * Configurations for NPM module configurations. Add to or override in project.config.ts.
@@ -572,8 +571,8 @@ export class SeedConfig {
       coverageReporter: {
         dir: this.COVERAGE_DIR + '/',
         reporters: [
-          { type: 'json', subdir: '.', file: 'coverage-final.json' },
-          { type: 'html', subdir: '.' }
+          {type: 'json', subdir: '.', file: 'coverage-final.json'},
+          {type: 'html', subdir: '.'}
         ]
       },
       remapIstanbulReporter: {
