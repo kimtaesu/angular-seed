@@ -5,7 +5,7 @@
       <md-input-container>
         <tr>
           <input md-input formControlName="c_email" type="email" placeholder="Email" name="email" [ngModel]="user.email"
-                 required>
+                 required #emailValue>
         </tr>
         <div ng-messages="emailForm.c_email.$error" [hidden]="emailForm.valid">
           <div ng-message="required">이메일 형식이 맞지 않습니다.</div>
@@ -16,7 +16,7 @@
     <form [formGroup]="passwordForm">
       <md-input-container>
         <input md-input formControlName="c_password" type="password" placeholder="Password" name="password"
-               [ngModel]="user.password" required>
+               [ngModel]="user.password" required #passValue>
         <div ng-messages="passwordForm.c_password.$error" [hidden]="passwordForm.valid">
           <div ng-message="required">문자 숫자 조합 8자리 이상</div>
         </div>
@@ -24,7 +24,7 @@
     </form>
 
     <div class="container">
-      <button md-raised-button [disabled]="!(passwordForm.valid && emailForm.valid)">Sign In</button>
+      <button md-raised-button [disabled]="!(passwordForm.valid && emailForm.valid)" (click)="onLogin($event, emailValue.value, passValue.value)">Sign In</button>
       <button md-raised-button>Sign Up</button>
     </div>
 
