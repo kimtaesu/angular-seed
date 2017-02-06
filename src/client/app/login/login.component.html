@@ -1,1 +1,14 @@
-<p>Login</p>
+<md-card>
+  <md-card-content class="container">
+    <form [formGroup]="loginForm">
+      <md-input-container>
+        <input md-input formControlName="email" placeholder="Email" name="email" [ngModel]="user.email" required>
+        <div ng-messages="loginForm.email.$error">
+          <div ng-message="required" *ngIf="true">Name is required.</div>
+        </div>
+        <p>{{loginForm.email | json}}</p>
+      </md-input-container>
+    </form>
+
+  </md-card-content>
+</md-card>
