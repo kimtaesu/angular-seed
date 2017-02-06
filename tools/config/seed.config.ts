@@ -359,6 +359,7 @@ export class SeedConfig {
     defaultJSExtensions: true,
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
+      'hammerjs': 'node_modules/hammerjs/hammer.js',
       '@angular/material': 'node_modules/@angular/material/bundles/material.umd.js',
       '@angular/common': 'node_modules/@angular/common/bundles/common.umd.js',
       '@angular/compiler': 'node_modules/@angular/compiler/bundles/compiler.umd.js',
