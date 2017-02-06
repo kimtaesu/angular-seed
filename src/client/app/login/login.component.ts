@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {LoginUser} from "../shared/domain/LoginUser";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {ValidateEmail} from "../common/validation/email-input.validator";
+import {ValidatePassWord} from "../common/validation/password-input.validator";
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -16,15 +17,18 @@ export class LoginComponent implements OnInit {
 
   user: LoginUser = new LoginUser('', '');
 
-  loginForm: FormGroup
+  emailForm: FormGroup
+  passwordForm: FormGroup
 
   constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, ValidateEmail]],
+    this.emailForm = this.formBuilder.group({
+      c_email: ['', [Validators.required, ValidateEmail]],
     });
-
+    this.passwordForm = this.formBuilder.group({
+      c_password: ['', [Validators.required, ValidatePassWord]],
+    });
   }
 }
