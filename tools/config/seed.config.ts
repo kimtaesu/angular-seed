@@ -42,6 +42,7 @@ export const BUILD_TYPES: BuildType = {
  */
 export class SeedConfig {
 
+  OAUTH2_CLIENT: string = 'YWFhOmFhYQ==';
   /**
    * The port where the application will run.
    * The default port is `5555`, which can be overriden by the  `--port` flag when running `npm start`.
@@ -310,6 +311,7 @@ export class SeedConfig {
    * @type {string[]}
    */
   EXTRA_WATCH_PATHS: string[] = [];
+
 
   /**
    * The list of NPM dependcies to be injected in the `index.html`.
